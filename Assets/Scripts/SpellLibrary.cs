@@ -10,13 +10,28 @@ public class SpellLibrary : MonoBehaviour
         bool[,] tempaoe = {{false,false,false},
                            {false,true ,false},
                            {false,false,false}};
-        Spell temp = new Spell(str, spd, size, tempaoe, 1f);
+        Spell temp = new Spell(str, spd, size, tempaoe, 1f,SpellType.fire);
         spellLibrary.Add(spellName, temp);
     }
 
     public void AddSpell(string spellName, int str, int spd, int size, bool[,] aoe)
     {
-        Spell temp = new Spell(str, spd, size, aoe, 1f);
+        Spell temp = new Spell(str, spd, size, aoe, 1f,SpellType.fire);
+        spellLibrary.Add(spellName, temp);
+    }
+
+    public void AddSpell(string spellName, int str, int spd, int size,SpellType spellType)
+    {
+        bool[,] tempaoe = {{false,false,false},
+                           {false,true ,false},
+                           {false,false,false}};
+        Spell temp = new Spell(str, spd, size, tempaoe, 1f,spellType);
+        spellLibrary.Add(spellName, temp);
+    }
+
+    public void AddSpell(string spellName, int str, int spd, int size, bool[,] aoe, SpellType spellType)
+    {
+        Spell temp = new Spell(str, spd, size, aoe, 1f,spellType);
         spellLibrary.Add(spellName, temp);
     }
     public Spell getSpell(string spellName)
@@ -47,13 +62,17 @@ public class Spell
     //mana cost of the spell
     public int manaCost;
 
-    public Spell(int strength, int speed, int size, bool[,] aoe, float aoeMult)
+    //type of spell
+    public SpellType spellType;
+
+    public Spell(int strength, int speed, int size, bool[,] aoe, float aoeMult, SpellType spellType)
     {
         this.strength = strength;
         this.speed = speed;
         this.size = size;
         this.aoe = aoe;
         this.aoeMult = aoeMult;
+        this.spellType = spellType;
 
         manaCost = strength + speed + size; //should be balanced later
     }
@@ -62,4 +81,12 @@ public class Spell
     {
         return strength + speed + size;
     }
+
+    
 }
+public enum SpellType{
+        fire,
+        lightning,
+        melee
+        
+    }

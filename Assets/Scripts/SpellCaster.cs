@@ -39,7 +39,7 @@ public class SpellCaster : MonoBehaviour
                 GameObject Attack = Instantiate(AttackFab, new Vector3(attackPad.position.x, attackPad.position.y + 0.1f, attackPad.position.z), attackPad.rotation);
                 Attack.transform.localScale = new Vector3(0, 0, 0);
                 Attack.transform.parent = parentObject.transform;
-                StartCoroutine(SmoothScaleLerp(Attack, Attack.transform.localScale, new Vector3(0.33f * (float)spell.size, 0.05f * (float)spell.size, 0.33f * (float)spell.size), spell.speed));
+                StartCoroutine(SmoothScaleLerpFire(Attack, Attack.transform.localScale, new Vector3(0.33f * (float)spell.size, 0.05f * (float)spell.size, 0.33f * (float)spell.size), spell.speed));
             }
         }
 
@@ -51,7 +51,7 @@ public class SpellCaster : MonoBehaviour
     {
         return casting;
     }
-    private IEnumerator SmoothScaleLerp(GameObject scalingObject, Vector3 startScl, Vector3 finalScl, int speed)
+    private IEnumerator SmoothScaleLerpFire(GameObject scalingObject, Vector3 startScl, Vector3 finalScl, int speed)
     {
         casting = true;
         yield return new WaitForSeconds(0.5f);
