@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         //can be set from save file or from cloud or both
         hp = 10;
         level = 1;
-        speed = 10;
+        speed = 12;
         maxmana = 10;
         mana = 10;
     }

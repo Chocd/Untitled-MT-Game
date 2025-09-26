@@ -103,6 +103,10 @@ public class GameController : MonoBehaviour
     }
     public void ForceMove(Player player)
     {
+        //DISABLED
+        return;
+
+
         if (player.gameObject.name == "Player") EnemyMovement.ForceMovePlayer();
         else PlayerMovement.ForceMovePlayer();
     }
