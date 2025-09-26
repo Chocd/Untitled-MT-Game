@@ -77,9 +77,9 @@ public class Spell
         manaCost = strength + speed + size; //should be balanced later
     }
 
-    public float getCastTimeInTensOfMillis()
+    public float getCastTime()
     {
-        return strength + speed + size;
+        return (strength + speed + size)*10;
     }
 
     
